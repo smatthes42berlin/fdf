@@ -1,0 +1,28 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile_test                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/26 15:04:01 by smatthes          #+#    #+#              #
+#    Updated: 2023/09/06 09:37:45 by smatthes         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCTEST = 	test_ft_split_str.c \
+			test_ft_putnbr_base_fd_l.c \
+			test_ft_putnbr_base_fd_ul.c \
+			test_ft_arr_len_char.c \
+			test_ft_str_chr_index.c \
+			test_ft_str_cont_duplic.c \
+			test_ft_atoi_base_l.c \
+			test_ft_str_cont_chars.c \
+			test_empty_file.c \
+			test_multiple_newline_at_eof.c \
+			test_multiple_newline.c \
+			test_newline_at_eof.c \
+			test_no_newline_at_eof.c \
+			test_normal_file.c \
+			test_controller.c \
+# test_very_long_line.c
