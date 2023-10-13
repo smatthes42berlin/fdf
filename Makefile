@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/06 11:12:00 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/13 13:56:57 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ PATHOBJ = build/obj/
 
 VPATH = $(PATHSRC)
 
-SRC = 	main.c
+SRC = 	main.c \
+		colors.c
 		
 OBJFNAME = $(SRC:.c=.o)
 OBJ = $(patsubst %,$(PATHOBJ)%,$(OBJFNAME))

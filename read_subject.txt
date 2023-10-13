@@ -1,0 +1,17 @@
+nur dieses Error-Handling erforderlich:
+- keine Parameter angegeben
+- zu viele Parameter angegeben
+- eine Map angegeben, die nicht existiert
+- eine Map angegeben, auf die man keine Rechte hat
+fuer den Rest der Eval sind alle Maps richtig formatiert anzugeben
+
+before submission, make sure I can explain every theoretical aspect
+
+
+-> handling wrong arguments
+-> read map
+-> project map
+-> write projected coordinates to image
+-> load image
+-> on ESC free and quit
+-> on Press X, free and quit

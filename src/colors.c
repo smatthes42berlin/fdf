@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 10:22:38 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/06 11:09:50 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/13 13:42:10 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/13 14:04:53 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-// read map
-// check map
-// display map
-
-int	main(void)
+int	create_trgb(int t, int r, int g, int b)
 {
-	void *mlx;
-	void *mlx_win;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-	mlx = mlx_init();
-	if (NULL == mlx)
-		return (1);
+int	get_t(int trgb)
+{
+	return ((trgb >> 24) & 0xFF);
+}
 
-    mlx_win = mlx_new_window(mlx, 500, 500, "Hello world!");
-    sleep(2);
-    // mlx_loop(mlx);
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
 
-    mlx_destroy_window(mlx, mlx_win);
-    mlx_destroy_display(mlx);
-    free(mlx);
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
 
-	return (1);
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }
