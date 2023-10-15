@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:23:36 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/05 11:50:43 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:53:59 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include "included_ext_libs.h"
 # include "macros.h"
+
+typedef struct s_file_info
+{
+	int					*cols;
+	int					rows;
+	char				sep;
+	int					file_size;
+}						t_file_info;
 
 typedef struct s_list
 {
@@ -80,6 +88,7 @@ int						malloc_error_free(char **res, size_t i_num_substr,
 							size_t substr_len);
 char					**ft_split(char const *s, char c);
 char					**ft_split_str(char const *s, char const *split_at);
+size_t					ft_split_num_substr(char const *s, char c);
 
 /* mem stuff */
 
@@ -108,9 +117,9 @@ t_list					*ft_lstmap(t_list *lst, void *(*f)(void *),
 
 t_list_dc				*dc_lst_new(void *content);
 
-void					dc_lst_print_whole(t_list_dc *lst_ptr,
-							const char *longShort,
-							const char *type);
+void	dc_lst_print_whole(t_list_dc *lst_ptr,
+						const char *longShort,
+						const char *type);
 void					dc_lst_print_one_str_long(void *lst_ptr_void);
 void					dc_lst_print_one_str_short(void *lst_ptr_void);
 void					dc_lst_print_one_int_long(void *lst_ptr_void);
@@ -124,7 +133,8 @@ int						dc_lst_size(t_list_dc *lst);
 void					dc_lst_clear(t_list_dc **lst, void (*del)(void *));
 void					dc_lst_del_one(t_list_dc *lst, void (*del)(void *));
 void					dc_lst_iter_node(t_list_dc *lst, void (*f)(void *));
-void					dc_lst_iter_content(t_list_dc *lst, void (*f)(void *));
+void	dc_lst_iter_content(t_list_dc *lst,
+							void (*f)(void *));
 t_list_dc				*dc_lst_map(t_list_dc *lst, void *(*f)(void *),
 							void (*del)(void *));
 int						dc_lst_exactly_one(t_list_dc *lst_ptr);
@@ -139,15 +149,15 @@ t_list_dc				*dc_lst_swap(t_list_dc **lst);
 void					ft_putchar_fd(char c, int fd);
 size_t					ft_putchar_fd_len(char c, int fd);
 void					ft_putstr_fd(char *s, int fd);
-size_t					ft_putstr_fd_len(char *s,
-							int fd);
+size_t	ft_putstr_fd_len(char *s,
+						int fd);
 size_t					ft_putstr_fd_len_only_print(char *s, int fd);
 void					ft_putendl_fd(char *s, int fd);
 void					ft_putnbr_fd(int n, int fd);
 size_t					ft_putnbr_base_fd_l(int fd, long nbr, const char *base);
 size_t					ft_putnbr_base_fd_ul(int fd, unsigned long nbr,
 							const char *base);
-size_t					ft_putnbr_base_check(const char *base,
+size_t	ft_putnbr_base_check(const char *base,
 							t_base_info *base_info);
 
 /* atoi itoa */
@@ -173,5 +183,20 @@ void					print_str_arr(char **arr, int num);
 /* math */
 
 int						ft_pow(int nb, int power);
+
+/* files */
+
+int						count_lines_filename(char *filename);
+int						count_lines_size_filename(char *filename,
+							t_file_info *file_info);
+int						count_lines_fd(int fd);
+int						count_lines_size_fd(int fd, t_file_info *file_info);
+void					free_file_info(t_file_info *file_info);
+int	count_cols_per_line_fd(int fd,
+							t_file_info *file_info);
+int	count_cols_per_line_filename(char *filename,
+									t_file_info *file_info);
+int						get_file_size_filename(char *filename);
+int						get_file_size_fd(int fd);
 
 #endif

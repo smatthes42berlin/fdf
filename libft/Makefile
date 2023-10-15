@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/09/29 11:30:09 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/15 14:49:11 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC = cc
 PATHPROJABS = /home/smatthes/42cursus/projects42/push_swap/
 INCLUDESRCPATH = ./include/
 INCLUDETESTPATH = ./includetest/
-SUBFOLDERSRC = . ascii/ convert/ io/ s_lst/ dc_lst/ mem/ split/ str/ int_arr/ get_next_line/ printf/ str_arr/ math/
+SUBFOLDERSRC = . ascii/ convert/ io/ s_lst/ dc_lst/ mem/ split/ str/ int_arr/ get_next_line/ printf/ str_arr/ math/ files/
 BASEPATHSRC = ./src/
 PATHSRC = $(patsubst %,$(BASEPATHSRC)%,$(SUBFOLDERSRC))
 PATHBUILD = build/

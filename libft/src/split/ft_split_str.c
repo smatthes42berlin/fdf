@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 20:11:04 by smatthes          #+#    #+#             */
-/*   Updated: 2023/09/03 08:01:38 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:34:51 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ static int	split_at_occurs(char const *str, char const *split_at,
 		return (0);
 	sub_str = ft_substr(str, 0, split_at_length);
 	cmp_res = ft_strncmp(sub_str, split_at, split_at_length);
+	free(sub_str);
 	if (cmp_res == 0)
 		return (1);
 	return (0);

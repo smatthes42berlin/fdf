@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 07:50:58 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/06 08:51:09 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:00:13 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define BUFFER_PARSED -2
 # define NEW_BUFFER -1
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 10000
 # endif
 
 // colors

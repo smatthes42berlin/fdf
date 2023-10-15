@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/13 13:56:57 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/15 11:09:06 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,9 @@ PATHOBJ = build/obj/
 VPATH = $(PATHSRC)
 
 SRC = 	main.c \
-		colors.c
+		check_input_main.c \
+		parse_map_main.c \
+		parse_map_check_dimensions.c
 		
 OBJFNAME = $(SRC:.c=.o)
 OBJ = $(patsubst %,$(PATHOBJ)%,$(OBJFNAME))

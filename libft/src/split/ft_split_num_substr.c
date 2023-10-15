@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split_num_substr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 09:52:03 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/15 11:35:35 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/15 15:16:10 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
+#include "./lib_main.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t	ft_split_num_substr(char const *s, char c)
 {
-	size_t			str_len;
-	char			*substr;
-	unsigned int	sub_len;
+	size_t	state;
+	size_t	num_substr;
+	int		i;
 
-	str_len = ft_strlen(s);
-	if (len == 0 || str_len == 0 || str_len <= start)
-		return (ft_strdup(""));
-	if (str_len < (start + len))
-		sub_len = str_len - start;
-	else
-		sub_len = len;
-	substr = malloc(sizeof(*substr) * (sub_len + 1));
-	if (!substr)
-		return (NULL);
-	ft_strlcpy(substr, (s + start), sub_len + 1);
-	return (substr);
+	state = 0;
+	num_substr = 0;
+	i = -1;
+	while (s[++i])
+	{
+		if (state == 0 && s[i] != c)
+		{
+			state = 1;
+			num_substr++;
+		}
+		if (state == 1 && s[i] == c)
+			state = 0;
+	}
+	return (num_substr);
 }

@@ -5,6 +5,8 @@
         "titleBar.activeForeground": "#FAFBF5"
     },
     "files.associations": {
-        "math.h": "c"
+        "math.h": "c",
+        "lib_main.h": "c",
+        "included_ext_libs.h": "c"
     }
 }

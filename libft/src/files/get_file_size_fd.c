@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   included_ext_libs.h                                :+:      :+:    :+:   */
+/*   get_file_size_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/02 11:44:42 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/15 14:40:46 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/15 14:41:53 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/15 19:13:45 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDED_EXT_LIBS_H
-# define INCLUDED_EXT_LIBS_H
+#include "lib_main.h"
 
-# include <limits.h>
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <math.h>
-# include <sys/stat.h>
-# include <sys/types.h>
+int	get_file_size_fd(int fd)
+{
+	int		num_bytes;
+	int		file_size;
+	char	buffer[BUFFER_SIZE];
 
-#endif
+	num_bytes = read(fd, buffer, BUFFER_SIZE);
+	if (num_bytes == 0)
+		return (0);
+	file_size = num_bytes;
+	while (num_bytes != 0)
+	{
+		num_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (num_bytes == -1)
+			return (-1);
+		file_size += num_bytes;
+	}
+	return (file_size);
+}

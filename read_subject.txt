@@ -15,3 +15,16 @@ before submission, make sure I can explain every theoretical aspect
 -> load image
 -> on ESC free and quit
 -> on Press X, free and quit
+-> dont draw outside of window, leads to segfaults
+
+
+-> do isometric projection
+-> write line drawing algo
+-> write color interpolation algo
+-> 
+
+-> test with every of the sample maps
+
+-> what happens, when you put a height of INT_MIN or INT_MAX in there?
+
+-> set max height and width limit
