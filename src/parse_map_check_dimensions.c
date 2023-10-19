@@ -6,87 +6,63 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:28:19 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/15 14:23:38 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:28:45 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	check_map_dimensions(char *filename, int *map_width, int *map_height)
+int	check_map_dimensions(char *filename, t_file_info *file_info)
 {
-	int	fd;
+	int	res;
 
-	*map_height = 0;
-	*map_width = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	file_info->sep = ' ';
+	res = count_cols_per_line_filename(filename, file_info);
+	if (res == -1)
 		return (0);
-	if (!check_row_per_row(fd, map_width, map_height))
+	if (!check_only_empty_rows_at_end(file_info))
 		return (0);
-	if (close(fd) == -1)
+	if (!check_rectangular_map(*file_info))
 		return (0);
 	return (1);
 }
 
-int	check_row_per_row(int fd, int *map_width, int *map_height)
+int	check_only_empty_rows_at_end(t_file_info *file_info)
 {
-	int		row_length;
-	char	*next_line;
-	char	**one_row;
+	int	i;
+	int	empty_row_state;
+	int	non_empty_rows;
 
-	next_line = gnl_no_newline(fd);
-	while (next_line)
+	i = 0;
+	empty_row_state = 0;
+	non_empty_rows = file_info->rows;
+	while (i < file_info->rows)
 	{
-		// ft_printf("next line is: $%s$\n", next_line);
-		(*map_height)++;
-		one_row = ft_split_str(next_line, " ");
-		if (!one_row)
-			return (0);
-		row_length = ft_arr_len_char(one_row);
-		// ftrintf("map height: $%d$\n", *map_height);
-		// ft_printf("map width: $%d$\n", *map_width);
-		// ft_printf("row length: $%d$\n", row_length);
-		// ft_printf("\n\n\n");
-		if (!check_row_against_prev(row_length, *map_width))
+		if (file_info->cols[i] == 0)
 		{
-			free(next_line);
-			free_str_arr_null(one_row);
-			return (0);
+			non_empty_rows = i;
+			empty_row_state = 1;
 		}
-		if(row_length > 0)
-			*map_width = row_length;
-		free_str_arr_null(one_row);
-		free(next_line);
-		next_line = gnl_no_newline(fd);
+		if (file_info->cols[i] != 0 && empty_row_state == 1)
+			return (0);
+		i++;
+	}
+	file_info->rows = non_empty_rows;
+	return (1);
+}
+
+int	check_rectangular_map(t_file_info file_info)
+{
+	int	i;
+	int	rec_width;
+
+	rec_width = file_info.cols[0];
+	i = 1;
+	while (i < file_info.rows)
+	{
+		if (file_info.cols[i] != 0 && file_info.cols[i] != rec_width)
+			return (0);
+		i++;
 	}
 	return (1);
-}
-
-int	check_row_against_prev(int row_length, int map_width)
-{
-	if (map_width == 0 || row_length == 0)
-		return (1);
-	if (row_length != map_width)
-		return (0);
-	return (1);
-}
-
-char	*gnl_no_newline(int fd)
-{
-	char	*next_line;
-	char	*tmp;
-	int		index_newline;
-
-	next_line = get_next_line(fd);
-	if (next_line)
-	{
-		index_newline = ft_str_chr_index(next_line, '\n');
-		if (index_newline >= 0)
-		{
-			tmp = next_line;
-			next_line = ft_substr(tmp, 0, index_newline);
-			free(tmp);
-		}
-	}
-	return (next_line);
 }

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   show_points_mlibx_free.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 08:35:50 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 18:02:09 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/19 18:01:54 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 18:41:52 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char *argv[])
+int	free_xserver_con_err(t_mlx_data con_data)
 {
-	t_point_coll	all_points;
+	mlx_destroy_display(con_data.mlx_ptr);
+	free(con_data.mlx_ptr);
+	return (mlx_error());
+}
 
-	if (!check_input_main(argc, argv))
-		return (1);
-	if (!parse_map_main(&all_points, argv[1]))
-		return (1);
-	proj_points_iso(&all_points);
-	get_points_range(&all_points);
-	calc_points_color(&all_points);
-	show_points_mlibx(&all_points);
-	print_points(&all_points);
-	print_point_info(&all_points);
-	free_point_coll(&all_points);
-	return (0);
+int	free_window(t_mlx_data con_data)
+{
+	mlx_destroy_window(con_data.mlx_ptr, con_data.win_ptr);
+	return (free_xserver_con(con_data));
+}
+
+int	free_xserver_image(t_mlx_data con_data, t_img_data img)
+{
+	mlx_destroy_image(con_data.mlx_ptr, img.img);
+	return (free_window(con_data));
 }

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   free_all_points.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 15:18:26 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 09:09:07 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/19 09:24:00 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 13:27:32 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
+#include "fdf.h"
 
-void	free_file_info_ptr(t_file_info *file_info)
+void	free_point_coll(t_point_coll *point_coll)
 {
-	free_file_info(*file_info);
-	free(file_info);
-}
-
-void	free_file_info(t_file_info file_info)
-{
-	free(file_info.cols);
+	free(point_coll->points);
 }

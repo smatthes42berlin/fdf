@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   str_is_empty.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 15:18:26 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 09:09:07 by smatthes         ###   ########.fr       */
+/*   Created: 2023/03/21 08:50:34 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 10:10:01 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
-
-void	free_file_info_ptr(t_file_info *file_info)
+int	str_is_empty(const char *str)
 {
-	free_file_info(*file_info);
-	free(file_info);
-}
-
-void	free_file_info(t_file_info file_info)
-{
-	free(file_info.cols);
+	if (!str)
+		return (0);
+	if (str[0] == '\0')
+		return (1);
+	return (0);
 }

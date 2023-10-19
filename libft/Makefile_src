@@ -6,12 +6,13 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 15:04:01 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/15 19:54:38 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/19 16:26:44 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =	ft_atoi.c \
 		ft_atoi_base_l.c \
+		ft_atoi_secure.c \
 		ft_isdigit.c \
 		ft_isspace.c \
 		ft_memmove.c \
@@ -89,6 +90,7 @@ SRC =	ft_atoi.c \
 		ft_str_cont_duplic.c \
 		ft_str_chr_index.c \
 		str_are_equal.c \
+		str_is_empty.c \
 		ft_arr_set_int.c \
 		ft_str_cont_chars.c \
 		get_next_line.c \
@@ -110,6 +112,7 @@ SRC =	ft_atoi.c \
 		int_arr_int_index.c \
 		print_int_arr.c \
 		ft_pow.c \
+		ft_abs.c \
 		count_lines_fd.c \
 		count_lines_filename.c \
 		count_lines_size_fd.c \

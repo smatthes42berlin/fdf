@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   show_points_mlibx_draw.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 15:18:26 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 09:09:07 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/19 18:01:54 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 18:36:23 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
-
-void	free_file_info_ptr(t_file_info *file_info)
-{
-	free_file_info(*file_info);
-	free(file_info);
-}
-
-void	free_file_info(t_file_info file_info)
-{
-	free(file_info.cols);
-}
+#include "fdf.h"

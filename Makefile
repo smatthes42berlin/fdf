@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/15 11:09:06 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/19 18:26:10 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,18 @@ VPATH = $(PATHSRC)
 SRC = 	main.c \
 		check_input_main.c \
 		parse_map_main.c \
-		parse_map_check_dimensions.c
+		parse_map_check_dimensions.c \
+		parse_map_get_points.c \
+		free_all_points.c \
+		print_points.c \
+		project_points_main.c \
+		parse_map_utils.c \
+		calc_points_color_main.c \
+		colors.c \
+		get_points_range.c \
+		show_points_mlibx_main.c \
+		show_points_mlibx_free.c 
+
 		
 OBJFNAME = $(SRC:.c=.o)
 OBJ = $(patsubst %,$(PATHOBJ)%,$(OBJFNAME))

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 15:18:26 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 09:09:07 by smatthes         ###   ########.fr       */
+/*   Created: 2023/09/29 11:30:26 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 16:26:18 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
-
-void	free_file_info_ptr(t_file_info *file_info)
+int	ft_abs(int nb)
 {
-	free_file_info(*file_info);
-	free(file_info);
-}
-
-void	free_file_info(t_file_info file_info)
-{
-	free(file_info.cols);
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
 }

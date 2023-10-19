@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:23:36 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/15 19:53:59 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:26:34 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char					*ft_strnstr(const char *big, const char *little,
 int						ft_str_cont_duplic(const char *str);
 int						ft_str_cont_chars(const char *str, const char *set);
 int						str_are_equal(const char *s1, const char *s2);
+int						str_is_empty(const char *str);
 
 /* str manip */
 
@@ -164,6 +165,8 @@ size_t	ft_putnbr_base_check(const char *base,
 
 int						ft_atoi(const char *nptr);
 ssize_t					ft_atoi_base_l(const char *nptr, const char *base);
+int						ft_atoi_secure(const char *nptr);
+
 char					*ft_itoa(int n);
 
 /* int arr */
@@ -183,15 +186,17 @@ void					print_str_arr(char **arr, int num);
 /* math */
 
 int						ft_pow(int nb, int power);
+int						ft_abs(int nb);
 
 /* files */
 
 int						count_lines_filename(char *filename);
-int						count_lines_size_filename(char *filename,
-							t_file_info *file_info);
+int	count_lines_size_filename(char *filename,
+								t_file_info *file_info);
 int						count_lines_fd(int fd);
 int						count_lines_size_fd(int fd, t_file_info *file_info);
-void					free_file_info(t_file_info *file_info);
+void					free_file_info_ptr(t_file_info *file_info);
+void					free_file_info(t_file_info file_info);
 int	count_cols_per_line_fd(int fd,
 							t_file_info *file_info);
 int	count_cols_per_line_filename(char *filename,

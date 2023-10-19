@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 15:18:26 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 09:09:07 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/15 10:28:19 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/19 14:06:10 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_main.h"
+#include "fdf.h"
 
-void	free_file_info_ptr(t_file_info *file_info)
+char	*gnl_no_newline(int fd)
 {
-	free_file_info(*file_info);
-	free(file_info);
-}
+	char	*next_line;
+	char	*tmp;
+	int		index_newline;
 
-void	free_file_info(t_file_info file_info)
-{
-	free(file_info.cols);
+	next_line = get_next_line(fd);
+	if (next_line)
+	{
+		index_newline = ft_str_chr_index(next_line, '\n');
+		if (index_newline >= 0)
+		{
+			tmp = next_line;
+			next_line = ft_substr(tmp, 0, index_newline);
+			free(tmp);
+		}
+	}
+	return (next_line);
 }
