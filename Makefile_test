@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile_test                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/20 14:57:29 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/20 16:49:16 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ PATHOBJ = build/obj/
 
 VPATH = $(PATHSRC) $(INCLUDEPATH)
 
-SRC = 	main.c \
+SRC = 	main_testing.c \
 		check_input_main.c \
 		parse_map_main.c \
 		parse_map_check_dimensions.c \
@@ -52,10 +52,7 @@ SRC = 	main.c \
 		parse_map_utils.c \
 		calc_points_color_main.c \
 		colors.c \
-		get_points_range.c \
-		show_points_mlibx_main.c \
-		show_points_mlibx_free.c \
-		show_points_mlibx_draw.c 
+		get_points_range.c 
 
 		
 OBJFNAME = $(SRC:.c=.o)

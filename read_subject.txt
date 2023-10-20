@@ -28,3 +28,5 @@ before submission, make sure I can explain every theoretical aspect
 -> what happens, when you put a height of INT_MIN or INT_MAX in there?
 
 -> set max height and width limit
+
+-> delete main testing

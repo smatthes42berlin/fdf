@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:38:48 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 18:39:44 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:50:43 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@
 # include "lib_main.h"
 # include "mlx.h"
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 3500
+# define HEIGHT 2000
 # define XK_ESCAPE 0xff1b
-# define R_LOW 0
-# define G_LOW 102
+// # define R_LOW 0
+// # define G_LOW 102
+// # define B_LOW 0
+// # define R_HIGH 102
+// # define G_HIGH 51
+// # define B_HIGH 0
+# define R_LOW 255
+# define G_LOW 0
 # define B_LOW 0
-# define R_HIGH 102
-# define G_HIGH 51
-# define B_HIGH 0
+# define R_HIGH 255
+# define G_HIGH 255
+# define B_HIGH 255
 
 typedef struct s_img_data
 {
@@ -33,12 +39,20 @@ typedef struct s_img_data
 	int			bits_per_pixel;
 	int			endian;
 	int			line_length;
+	int			margin;
+	float		scale_y;
+	float		scale_x;
+	float		scale;
+	int			offset_x;
+	int			offset_y;
 }				t_img_data;
 
 typedef struct s_mlx_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	int			screen_width;
+	int			screen_height;
 	t_img_data	img_data;
 }				t_mlx_data;
 
@@ -119,9 +133,12 @@ void			proj_points_iso(t_point_coll *all_points);
 
 int				show_points_mlibx(t_point_coll *all_points);
 int				free_xserver_con(t_mlx_data con_data);
-int				free_xserver_con_err(t_mlx_data con_data);
 int				free_window(t_mlx_data con_data);
 int				free_xserver_image(t_mlx_data con_data, t_img_data img);
+void			free_normal_exit(t_mlx_data con_data, t_img_data img);
 int				mlx_error(void);
+void			draw_points(t_point_coll *all_points, t_img_data *img,
+					t_mlx_data con_data);
+void			my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 
 #endif
