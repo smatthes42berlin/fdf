@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:38:48 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/20 14:50:43 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:40:19 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_point_3
 	int			b;
 	int			t;
 	int			trgb;
+	int			img_x;
+	int			img_y;
 }				t_point_3;
 
 typedef struct s_point_coll
@@ -85,6 +87,17 @@ typedef struct s_point_coll
 	t_range_int	z_range;
 	int			num;
 }				t_point_coll;
+
+typedef struct s_bresen_data
+{
+	int			x;
+	int			y;
+	int			dx;
+	int			dy;
+	int			rise_fall;
+	int			f;
+	int			lead_end;
+}				t_bresen_data;
 
 /* input checking */
 
@@ -137,8 +150,25 @@ int				free_window(t_mlx_data con_data);
 int				free_xserver_image(t_mlx_data con_data, t_img_data img);
 void			free_normal_exit(t_mlx_data con_data, t_img_data img);
 int				mlx_error(void);
-void			draw_points(t_point_coll *all_points, t_img_data *img,
+void			draw_image(t_point_coll *all_points, t_img_data *img,
 					t_mlx_data con_data);
+void			calc_points_img_coords(t_point_coll *all_points,
+					t_img_data *img, t_mlx_data con_data);
+void			calc_ppu(t_point_coll *all_points, t_mlx_data con_data,
+					t_img_data *img);
 void			my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
+
+/* draw line bresenham */
+
+void			draw_lin_bresenham(t_img_data *img, t_point_3 p1, t_point_3 p2);
+void			draw_bresenham_lead_x(t_img_data *img, t_bresen_data *data,
+					t_point_3 p1, t_point_3 p2);
+void			draw_bresenham_lead_y(t_img_data *img, t_bresen_data *data,
+					t_point_3 p1, t_point_3 p2);
+void			decide_rise_fall(int *rise_fall, int coord_1, int coord_2);
+void			decide_direction_x(t_bresen_data *data, t_point_3 p1,
+					t_point_3 p2);
+void			decide_direction_y(t_bresen_data *data, t_point_3 p1,
+					t_point_3 p2);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:01:54 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/20 15:45:52 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:40:05 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	show_points_mlibx(t_point_coll *all_points)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	all_points->height++;
-	draw_points(all_points, &img, con_data);
+	draw_image(all_points, &img, con_data);
 	mlx_put_image_to_window(con_data.mlx_ptr, con_data.win_ptr, img.img, 0, 0);
 	// mlx_loop(con_data.mlx_ptr);
 	sleep(2);
