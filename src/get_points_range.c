@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:08:17 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 17:29:48 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:40:31 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void	get_points_range(t_point_coll *all_points)
 		cur_pt = all_points->points[i];
 		if (i != 0)
 		{
-			adjust_range(&(all_points->x_range), cur_pt.x);
-			adjust_range(&(all_points->y_range), cur_pt.y);
+			adjust_range(&(all_points->x_range_iso_acc), cur_pt.x_iso_acc);
+			adjust_range(&(all_points->y_range_iso_acc), cur_pt.y_iso_acc);
 			adjust_range(&(all_points->z_range), cur_pt.z);
 		}
 		else
 		{
-			set_range(&(all_points->x_range), cur_pt.x);
-			set_range(&(all_points->y_range), cur_pt.y);
+			set_range(&(all_points->x_range_iso_acc), cur_pt.x_iso_acc);
+			set_range(&(all_points->y_range_iso_acc), cur_pt.y_iso_acc);
 			set_range(&(all_points->z_range), cur_pt.z);
 		}
 		i++;
 	}
-	calc_range_len(&(all_points->x_range));
-	calc_range_len(&(all_points->y_range));
+	calc_range_len(&(all_points->x_range_iso_acc));
+	calc_range_len(&(all_points->y_range_iso_acc));
 	calc_range_len(&(all_points->z_range));
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_points_mlibx_main.c                           :+:      :+:    :+:   */
+/*   show_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:01:54 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/21 11:40:05 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:36:01 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 static int	init_xserver_conn(t_mlx_data *con_data);
 static int	create_window(t_mlx_data *con_data);
 static int	create_image(t_mlx_data *con_data, t_img_data *img);
+
+int	handle_keypress(int keysym, t_mlx_data *con_data)
+{
+	if (keysym == XK_ESCAPE)
+	{
+		free_normal_exit(*con_data, con_data->img_data);
+		free_point_coll(con_data->all_points);
+		exit(1);
+	}
+	return (1);
+}
+
+int	handle_win_x_btn(t_mlx_data *con_data)
+{
+	free_normal_exit(*con_data, con_data->img_data);
+	free_point_coll(con_data->all_points);
+	exit(1);
+	return (1);
+}
 
 int	show_points_mlibx(t_point_coll *all_points)
 {
@@ -34,10 +53,13 @@ int	show_points_mlibx(t_point_coll *all_points)
 	all_points->height++;
 	draw_image(all_points, &img, con_data);
 	mlx_put_image_to_window(con_data.mlx_ptr, con_data.win_ptr, img.img, 0, 0);
-	// mlx_loop(con_data.mlx_ptr);
-	sleep(2);
+	con_data.img_data = img;
+	con_data.all_points = all_points;
+	mlx_hook(con_data.win_ptr, 2, (1L << 0), handle_keypress, &con_data);
+	mlx_hook(con_data.win_ptr, 17, (1L << 0), handle_win_x_btn, &con_data);
+	mlx_loop(con_data.mlx_ptr);
 	free_normal_exit(con_data, img);
-	return (1);
+	return (0);
 }
 
 static int	init_xserver_conn(t_mlx_data *con_data)

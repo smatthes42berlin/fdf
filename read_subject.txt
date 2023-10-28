@@ -30,3 +30,7 @@ before submission, make sure I can explain every theoretical aspect
 -> set max height and width limit
 
 -> delete main testing
+-> change bresenham line draw color
+-> map pentanegpos, pyra is weird
+-> delete stdio.lib
+-> remove unnecess print stuff

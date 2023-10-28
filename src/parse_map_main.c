@@ -6,7 +6,7 @@
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:28:19 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/19 17:26:42 by smatthes         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:16:11 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	error_map_dimensions(t_file_info file_info)
 	free_file_info(file_info);
 	ft_printf("Error: something went wrong when checking map dimensions.");
 	ft_printf(" Make sure map is rectangular");
-	ft_printf(" and and only contains newlines at the end!\n");
+	ft_printf(" and and only contains newlines at the end!");
+	ft_printf(" It must also contain at least 2 points!\n");
 	return (0);
 }
 

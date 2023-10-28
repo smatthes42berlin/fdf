@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/20 14:57:29 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/27 10:09:41 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,9 +53,13 @@ SRC = 	main.c \
 		calc_points_color_main.c \
 		colors.c \
 		get_points_range.c \
-		show_points_mlibx_main.c \
-		show_points_mlibx_free.c \
-		show_points_mlibx_draw.c 
+		show_main.c \
+		show_free.c \
+		show_draw_main.c \
+		show_draw_calc_coords.c \
+		show_draw_lines.c \
+		show_bresenham.c \
+		show_bresenham_utils.c
 
 		
 OBJFNAME = $(SRC:.c=.o)

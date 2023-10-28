@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   show_draw_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 08:35:50 by smatthes          #+#    #+#             */
-/*   Updated: 2023/10/28 09:35:17 by smatthes         ###   ########.fr       */
+/*   Created: 2023/10/19 18:01:54 by smatthes          #+#    #+#             */
+/*   Updated: 2023/10/27 14:52:54 by smatthes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char *argv[])
-{
-	t_point_coll	all_points;
 
-	if (!check_input_main(argc, argv))
-		return (1);
-	if (!parse_map_main(&all_points, argv[1]))
-		return (1);
-	proj_points_iso(&all_points);
-	get_points_range(&all_points);
-	calc_points_color(&all_points);
-	show_points_mlibx(&all_points);
-	return (0);
+void	draw_image(t_point_coll *all_points, t_img_data *img,
+		t_mlx_data con_data)
+{
+	calc_points_img_coords(all_points, img, con_data);
+	draw_lines(all_points, img);
 }
+
