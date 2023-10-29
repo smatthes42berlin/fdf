@@ -6,7 +6,7 @@
 #    By: smatthes <smatthes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 14:58:39 by smatthes          #+#    #+#              #
-#    Updated: 2023/10/27 10:09:41 by smatthes         ###   ########.fr        #
+#    Updated: 2023/10/29 12:53:51 by smatthes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ SRC = 	main.c \
 		show_draw_calc_coords.c \
 		show_draw_lines.c \
 		show_bresenham.c \
-		show_bresenham_utils.c
+		show_bresenham_utils.c \
+		show_events.c
 
 		
 OBJFNAME = $(SRC:.c=.o)
